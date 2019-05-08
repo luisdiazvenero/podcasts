@@ -2,24 +2,28 @@ import 'isomorphic-fetch'
 export default class extends React.Component {
 
   static async getInitialProps() {
-    let req = await fetch('https://api.audioboom.com/channels/recommended')
-    let { body: channels } = await req.json()
+    let req = await fetch('https://randomuser.me/api/?results=50&inc=name,picture,email')
+    let { results: persona } = await req.json()
 
-    return { channels }
+    return { persona }
   }
   render(){
-    const { channels } = this.props
-
+    const { persona } = this.props
+    //{console.log(persona)}
     return <div>
-      <header>Podcasts</header>
+      <header>Influencers</header>
+      
       <div className="channels">
-      { channels.map((channel) => (
-        <div className="channel">
-          <img src={ channel.urls.logo_image.original } alt=""/>
-          <h2>{channel.title}</h2>
-        </div>
-        ))}
+        { persona.map((user, index) => (
+          <div className="channel" key={index}>
+            <img src={user.picture.large } alt=""/>
+            <h2>{user.name.first} {user.name.last}</h2>
+            <p className="email">{user.email}</p>
+          </div>
+         
+        )) }
       </div>
+      
       
     
     <style jsx>{`
@@ -34,7 +38,7 @@ export default class extends React.Component {
       display: grid;
       grid-gap: 15px;
       padding: 15px;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
     .channel {
@@ -46,11 +50,17 @@ export default class extends React.Component {
   .channel img {
       width: 100%;   
   }
+  .channel .email {
+    font-size: 10px;
+    text-align: center;
+    margin: 0 0 10px;
+    color: blue;
+  }
   h2 {
-      padding: 5px;
+      padding: 5px 0 0;
       font-size: 0.9em;
       font-weight: 600;
-      maring: 0;
+      margin: 0;
       text-align: center;
   }
     `}</style>
