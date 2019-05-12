@@ -1,5 +1,6 @@
 import 'isomorphic-fetch'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default class extends React.Component {
 
@@ -12,9 +13,7 @@ export default class extends React.Component {
   render() {
     const { channels } = this.props
 
-    return <div>
-      <header>Podcasts</header>
-
+    return <Layout title="Podcasts">
       <div className="channels">
         { channels.map((channel) => (
           <Link href={`/channel?id=${channel.id}`} prefetch key={ channel.id }>
@@ -27,12 +26,7 @@ export default class extends React.Component {
       </div>
 
       <style jsx>{`
-        header {
-          color: #fff;
-          background: #8756ca;
-          padding: 15px;
-          text-align: center;
-        }
+        
         .channels {
           display: grid;
           grid-gap: 15px;
@@ -59,13 +53,7 @@ export default class extends React.Component {
         }
       `}</style>
 
-      <style jsx global>{`
-        body {
-          margin: 0;
-          font-family: system-ui;
-          background: white;
-        }
-      `}</style>
-    </div>
+      
+    </Layout>
   }
 }
