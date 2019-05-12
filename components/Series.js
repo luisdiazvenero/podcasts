@@ -7,7 +7,7 @@ export default class Series extends React.Component {
               <h2>Series</h2>
               <div className="channels">
                 { series.map((serie) => (
-                  <Link href={`/channel?id=${ serie.id }`} prefetch>
+                  <Link href={`/channel?id=${ serie.id }`} key={serie.id} prefetch>
                     <a className="channel">
                       <img src={ serie.urls.logo_image.original } alt=""/>
                       <h2>{ serie.title }</h2>
@@ -33,13 +33,7 @@ export default class Series extends React.Component {
                 box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
                 width: 100%;
                 }
-                h2 {
-                    padding: 5px;
-                    font-size: 0.9em;
-                    font-weight: 600;
-                    margin: 0;
-                    text-align: center;
-                    }
+                
                 `}</style>
             </div>
         

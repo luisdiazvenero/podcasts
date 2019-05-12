@@ -30,6 +30,13 @@ export default class Layout extends React.Component{
                     font-family: system-ui;
                     background: white;
                 }
+                h2 {
+                    padding: 15px;
+                    font-size: 0.9em;
+                    font-weight: 600;
+                    margin: 0;
+                    text-align: center;
+                    }
             `}</style>
         </div>
     }
