@@ -8,7 +8,7 @@ export default class Layout extends React.Component{
                 <title>{title}</title>
             </Head>
             <header><Link href="/"><a>Podcasts</a></Link> </header>
-            {children}
+            { children }
 
             <style jsx>{`
                 header {
