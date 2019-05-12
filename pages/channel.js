@@ -1,6 +1,7 @@
-import Link from 'next/link'
 import Layout from '../components/Layout'
 import Banner from '../components/Banner'
+import Series from '../components/Series'
+import LastPodcasts from '../components/LastPodcasts'
 
 export default class extends React.Component {
 
@@ -30,86 +31,18 @@ export default class extends React.Component {
 
     return <Layout title="Podcasts">
         <Banner channel={channel}/>
-      <h1>{ channel.title }</h1>
+        <h1>{ channel.title }</h1>
 
-      { series.length > 0 &&
-        <div>
-          <h2>Series</h2>
-          <div className="channels">
-            { series.map((serie) => (
-              <Link href={`/channel?id=${ serie.id }`} prefetch>
-                <a className="channel">
-                  <img src={ serie.urls.logo_image.original } alt=""/>
-                  <h2>{ serie.title }</h2>
-                </a>
-              </Link>
-            ))}
-          </div>
-        </div>
-      }
-
-      <h2>Ultimos Podcasts</h2>
-      { audioClips.map((clip) => (
-        <Link href={`/podcast?id=${clip.id}`} prefetch key={clip.id}>
-          <a className='podcast'>
-            <h3>{ clip.title }</h3>
-            <div className='meta'>
-              { Math.ceil(clip.duration / 60) } minutes
-            </div>
-          </a>
-        </Link>
-      ))}
-
-
-      <style jsx>{`
-
-        .channels {
-          display: grid;
-          grid-gap: 15px;
-          padding: 15px;
-          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        { series.length > 0 &&
+        <Series series = { series } />
         }
-        a.channel {
-          display: block;
-          margin-bottom: 0.5em;
-          color: #333;
-          text-decoration: none;
-        }
-        .channel img {
-          border-radius: 3px;
-          box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
-          width: 100%;
-        }
+
+        <LastPodcasts audioClips = { audioClips } />
+
+      <style jsx>{`    
         h1 {
           font-weight: 600;
           padding: 15px;
-        }
-        h2 {
-          padding: 5px;
-          font-size: 0.9em;
-          font-weight: 600;
-          margin: 0;
-          text-align: center;
-        }
-
-        .podcast {
-          display: block;
-          text-decoration: none;
-          color: #333;
-          padding: 15px;
-          border-bottom: 1px solid rgba(0,0,0,0.2);
-          cursor: pointer;
-        }
-        .podcast:hover {
-          color: #000;
-        }
-        .podcast h3 {
-          margin: 0;
-        }
-        .podcast .meta {
-          color: #666;
-          margin-top: 0.5em;
-          font-size: 0.8em;
         }
       `}</style>
 
