@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Layout from '../components/Layout'
+import Banner from '../components/Banner'
 
 export default class extends React.Component {
 
@@ -26,11 +28,8 @@ export default class extends React.Component {
   render() {
     const { channel, audioClips, series } = this.props
 
-    return <div>
-      <header>Podcasts</header>
-
-      <div className="banner" style={{ backgroundImage: `url(${channel.urls.banner_image.original})` }} />
-
+    return <Layout title="Podcasts">
+        <Banner channel={channel}/>
       <h1>{ channel.title }</h1>
 
       { series.length > 0 &&
@@ -63,20 +62,6 @@ export default class extends React.Component {
 
 
       <style jsx>{`
-        header {
-          color: #fff;
-          background: #8756ca;
-          padding: 15px;
-          text-align: center;
-        }
-
-        .banner {
-          width: 100%;
-          padding-bottom: 25%;
-          background-position: 50% 50%;
-          background-size: cover;
-          background-color: #aaa;
-        }
 
         .channels {
           display: grid;
@@ -128,13 +113,6 @@ export default class extends React.Component {
         }
       `}</style>
 
-      <style jsx global>{`
-        body {
-          margin: 0;
-          font-family: system-ui;
-          background: white;
-        }
-      `}</style>
-    </div>
+    </Layout>
   }
 }
