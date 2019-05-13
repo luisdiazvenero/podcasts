@@ -16,7 +16,7 @@ export default class extends React.Component {
   render() {
     const { clip } = this.props
 
-    return <Layout title="Podcasts">
+    return <Layout title={clip.title}>
       <div className='modal'>
         <div className='clip'>      
         <PodNav clip={clip}></PodNav>
