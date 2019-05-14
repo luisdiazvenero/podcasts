@@ -2,7 +2,7 @@ import Layout from '../components/Layout'
 import Banner from '../components/Banner'
 import Series from '../components/Series'
 import LastPodcasts from '../components/LastPodcasts'
-import Error from 'next/error'
+import Error from './_error'
 
 export default class extends React.Component {
 
