@@ -2,7 +2,7 @@
 
 App de Podcasts integrada con la API de AudioBoom usando NextJS
 
-![Captura de App] (./.readme-static/podcast-app.jpg)
+![Captura de App](./.readme-static/podcast-app.jpg)
 
 ## Cómo funciona
 
